@@ -1,0 +1,30 @@
+like org-pomodoro but with pausing and auto-start, continuous timer and WSL support (powershell)
+
+org-pomodoro-auto-start
+is set to t by default
+
+my config, and I provided pomodoro.wav in resources if you prefer to use my alarm.
+
+((I use load-path as this is not official package, and in case I prefer to use the vanilla package,
+I can revert back to that))
+
+----
+
+  (add-to-list 'load-path "~/.emacs.d/site-lisp/org-pomodoro")
+  (require 'org-pomodoro)
+
+  (setq org-pomodoro-keep-killed-pomodoro-time t)
+  (setq org-pomodoro-clock-break nil)
+  (setq org-pomodoro-finished-sound "~/.emacs.d/site-lisp/org-pomodoro/pomodoro.wav")
+  (setq org-pomodoro-finished-sound-p t)
+  (setq org-pomodoro-length 25)
+  (setq org-pomodoro-short-break-length 5)
+  (setq org-pomodoro-long-break-length 20)
+  (setq org-pomodoro-long-break-sound "~/.emacs.d/site-lisp/org-pomodoro/pomodoro.wav")
+  (setq org-pomodoro-short-break-sound "~/.emacs.d/site-lisp/org-pomodoro/pomodoro.wav")
+  (setq org-pomodoro-ticking-sound-p nil)
+
+  (global-set-key (kbd "C-c p") #'org-pomodoro-toggle-pause)
+  (global-set-key (kbd "C-c s") #'org-pomodoro)
+
+  (setq org-pomodoro-auto-start t)
